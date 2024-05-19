@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <title>Клуб Свободи</title>
+    <style>
+        .bg-gradient {
+            background: linear-gradient(180deg, #FFD700 0%, #FFA500 100%);
+            border-radius: 20px;
+        }
+        .hidden {
+            display: none;
+        }
+        .rounded-corners {
+            border-radius: 20px;
+        }
+        .shadow-reflection {
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2), 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+        .reflect:hover {
+            position: relative;
+            transform: scale(1.05);
+            transition: transform 0.3s ease;
+        }
+        .reflect:hover::after {
+            content: '';
+            position: absolute;
+            top: 110%;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: inherit;
+            box-shadow: inherit;
+            transform: scaleY(-1);
+            opacity: 0.6;
+            filter: blur(5px);
+            border-radius: inherit;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        .background-video {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: -1;
+        }
+        .content {
+            position: relative;
+            z-index: 1;
+        }
+        .btn-option {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0.5rem 1rem;
+            background-color: #374151;
+            border-radius: 0.375rem;
+            cursor: pointer;
+            transition: all 0.2s;
+            width: 100%;
+            text-align: center;
+            font-size: 1rem;
+        }
+        .btn-option:hover {
+            ring: 4px;
+            ring-color: #F59E0B;
+        }
+        .btn-option input[type="radio"],
+        .btn-option input[type="checkbox"] {
+            display: none;
+        }
+        .btn-option span {
+            color: #ffffff;
+        }
+        .btn-option.selected {
+            ring: 4px;
+            ring-color: #F59E0B;
+        }
+    </style>
+</head>
+<body class="bg-black text-white flex items-center justify-center min-h-screen">
+    <!-- Background Video -->
+    <video autoplay muted loop class="background-video">
+        <source src="images/videoback.mp4" type="video/mp4">
+        Your browser does not support HTML5 video.
+    </video>
+
+    <!-- First Page -->
+    <div id="page1" class="container text-center p-8 rounded-corners bg-gray-800 shadow-reflection content">
+        <h1 class="text-4xl font-bold mb-4">Комфорт без компромісів! 🌟</h1>
+        <p class="text-lg mb-4">Клуб Свободи - це ваша незалежність і впевненість у кожному кроці.</p>
+        <p class="text-lg mb-4">Отримуйте VIP-знижки на весь асортимент, безкоштовну доставку, персональне обслуговування та ексклюзивний доступ до новинок з персональним агентом, який завжди на зв’язку.</p>
+        <p class="text-lg mb-4">Станьте частиною Клубу, де комфорт - це закон! 💫</p>
+        <button onclick="showPage('page2')" class="bg-gradient text-black font-bold py-2 px-6 border rounded-full mb-4 shadow-reflection reflect">Почати</button>
+        <img src="images/page1.png" alt="Page image description" class="mt-4 rounded-corners shadow-reflection">
+    </div>
+
+    <!-- Second Page -->
+    <div id="page2" class="hidden container text-center p-8 rounded-corners bg-gray-800 shadow-reflection content">
+        <h1 class="text-4xl font-bold mb-4">Переваги Клубу Свободи</h1>
+        <div class="overflow-x-auto">
+            <table class="min-w-full bg-gray-900 border border-gray-700 rounded-corners">
+                <thead>
+                    <tr>
+                        <th class="px-4 py-2"></th>
+                        <th class="px-4 py-2 text-black bg-gradient">КЛУБ СВОБОДИ</th>
+                        <th class="px-4 py-2">КУПИТИ ОДИН РАЗ</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr class="bg-gray-800">
+                        <td class="border border-gray-700 px-4 py-2 rounded-corners">Комфорт гарантовано</td>
+                        <td class="border border-gray-700 px-4 py-2 text-center rounded-corners"><i class="fas fa-check-circle text-green-500"></i></td>
+                        <td class="border border-gray-700 px-4 py-2 text-center rounded-corners"><i class="fas fa-check-circle text-green-500"></i></td>
+                    </tr>
+                    <tr class="bg-gray-900">
+                        <td class="border border-gray-700 px-4 py-2 rounded-corners">🎟 -18,6% на всі товари</td>
+                        <td class="border border-gray-700 px-4 py-2 text-center rounded-corners"><i class="fas fa-check-circle text-green-500"></i></td>
+                        <td class="border border-gray-700 px-4 py-2 text-center rounded-corners"><i class="fas fa-times-circle text-red-500"></i></td>
+                    </tr>
+                    <tr class="bg-gray-800">
+                        <td class="border border-gray-700 px-4 py-2 rounded-corners">🕵️ Персональний агент</td>
+                        <td class="border border-gray-700 px-4 py-2 text-center rounded-corners"><i class="fas fa-check-circle text-green-500"></i></td>
+                        <td class="border border-gray-700 px-4 py-2 text-center rounded-corners"><i class="fas fa-times-circle text-red-500"></i></td>
+                    </tr>
+                    <tr class="bg-gray-900">
+                        <td class="border border-gray-700 px-4 py-2 rounded-corners">🌟 Індивідуальне обслуговування</td>
+                        <td class="border border-gray-700 px-4 py-2 text-center rounded-corners"><i class="fas fa-check-circle text-green-500"></i></td>
+                        <td class="border border-gray-700 px-4 py-2 text-center rounded-corners"><i class="fas fa-times-circle text-red-500"></i></td>
+                    </tr>
+                    <tr class="bg-gray-800">
+                        <td class="border border-gray-700 px-4 py-2 rounded-corners">🚚 Безкоштовна доставка</td>
+                        <td class="border border-gray-700 px-4 py-2 text-center rounded-corners"><i class="fas fa-check-circle text-green-500"></i></td>
+                        <td class="border border-gray-700 px-4 py-2 text-center rounded-corners"><i class="fas fa-times-circle text-red-500"></i></td>
+                    </tr>
+                    <tr class="bg-gray-900">
+                        <td class="border border-gray-700 px-4 py-2 rounded-corners">🎁 Сюрпризи в замовленнях</td>
+                        <td class="border border-gray-700 px-4 py-2 text-center rounded-corners"><i class="fas fa-check-circle text-green-500"></i></td>
+                        <td class="border border-gray-700 px-4 py-2 text-center rounded-corners"><i class="fas fa-times-circle text-red-500"></i></td>
+                    </tr>
+                    <tr class="bg-gray-800">
+                        <td class="border border-gray-700 px-4 py-2 rounded-corners">🎉 Подарунки за друзів</td>
+                        <td class="border border-gray-700 px-4 py-2 text-center rounded-corners"><i class="fas fa-check-circle text-green-500"></i></td>
+                        <td class="border border-gray-700 px-4 py-2 text-center rounded-corners"><i class="fas fa-times-circle text-red-500"></i></td>
+                    </tr>
+                    <tr class="bg-gray-900">
+                        <td class="border border-gray-700 px-4 py-2 rounded-corners">🤝 Спільнота однодумців</td>
+                        <td class="border border-gray-700 px-4 py-2 text-center rounded-corners"><i class="fas fa-check-circle text-green-500"></i></td>
+                        <td class="border border-gray-700 px-4 py-2 text-center rounded-corners"><i class="fas fa-times-circle text-red-500"></i></td>
+                    </tr>
+                    <tr class="bg-gray-800">
+                        <td class="border border-gray-700 px-4 py-2 rounded-corners">⏰ Нагадування про оновлення</td>
+                        <td class="border border-gray-700 px-4 py-2 text-center rounded-corners"><i class="fas fa-check-circle text-green-500"></i></td>
+                        <td class="border border-gray-700 px-4 py-2 text-center rounded-corners"><i class="fas fa-times-circle text-red-500"></i></td>
+                    </tr>
+                    <tr class="bg-gray-900">
+                        <td class="border border-gray-700 px-4 py-2 rounded-corners">🌈 Ексклюзивні пропозиції</td>
+                        <td class="border border-gray-700 px-4 py-2 text-center rounded-corners"><i class="fas fa-check-circle text-green-500"></i></td>
+                        <td class="border border-gray-700 px-4 py-2 text-center rounded-corners"><i class="fas fa-times-circle text-red-500"></i></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="mt-8 text-left bg-gray-700 p-6 rounded-corners shadow-reflection">
+            <h2 class="text-3xl font-bold mb-6">Як доєднатись до Клубу Свободи 🌟</h2>
+            <div class="mb-4">
+                <h3 class="text-xl font-semibold mb-2">Крок 1: Реєстрація з легкістю</h3>
+                <p>Відкрийте для себе світ комфорту та стилю, заповнивши нашу просту форму реєстрації. Виберіть моделі, які підкреслюють вашу індивідуальність, та комплектацію, яка відповідає вашим потребам: Light, Medium чи Deluxe.</p>
+            </div>
+            <div class="mb-4">
+                <h3 class="text-xl font-semibold mb-2">Крок 2: Ваш графік – ваші правила</h3>
+                <p>Скористайтеся свободою вибору із зручними інтервалами оновлення: щомісяця, раз на 3 місяці, чи раз на 6 місяців. Додайте свої улюблені кольори та вкажіть бажаний спосіб оплати.</p>
+            </div>
+            <div class="mb-4">
+                <h3 class="text-xl font-semibold mb-2">Крок 3: Підтвердження – швидко та безпечно</h3>
+                <p>Перегляньте деталі вашого замовлення та введіть дані для оплати. Завершіть процес, щоб активувати ваше членство та відкрити двері до ексклюзивних пропозицій.</p>
+            </div>
+            <div class="mb-4">
+                <h3 class="text-xl font-semibold mb-2">Крок 4: Перше замовлення – початок вашої подорожі</h3>
+                <p>Наш клуб з нетерпінням підготує та відправить ваш перший набір. Відчуйте радість від нової білизни, яка прибуде прямісінько до вашого дому.</p>
+            </div>
+            <div class="mb-4">
+                <h3 class="text-xl font-semibold mb-2">Крок 5: Персоналізовані нагадування</h3>
+                <p>Ми піклуємося про ваш комфорт, тому надсилаємо нагадування перед кожною доставкою. Ви завжди можете адаптувати свої уподобання, щоб ваш наступний набір був ідеальним.</p>
+            </div>
+            <div class="mb-4">
+                <h3 class="text-xl font-semibold mb-2">Крок 6: Безкінечні переваги членства</h3>
+                <p>Як член Клубу Свободи, ви постійно отримуєте ексклюзивні знижки та подарунки. Насолоджуйтесь привілеєм першими дізнаватися про нові колекції та брати участь у спеціальних подіях.</p>
+            </div>
+        </div>
+        <div class="flex justify-between mt-4">
+            <button onclick="showPage('page1')" class="bg-gradient text-black font-bold py-2 px-6 border rounded-full shadow-reflection reflect">
+                Назад
+            </button>
+            <button onclick="showPage('page3')" class="bg-gradient text-black font-bold py-2 px-6 border rounded-full shadow-reflection reflect">
+                ХОЧУ В КЛУБ
+            </button>
+        </div>
+    </div>
+
+    <!-- Third Page -->
+    <div id="page3" class="hidden container text-center p-8 rounded-corners bg-gray-800 shadow-reflection content">
+        <h1 class="text-4xl font-bold mb-4">Я хочу пару...</h1>
+        <form id="subscriptionForm" class="text-left">
+            <div class="grid grid-cols-2 gap-4">
+                <label class="btn-option">
+                    <img src="images/boxers.png" alt="Чоловіча Білизна" class="w-24 h-24 mb-2">
+                    <input type="checkbox" name="product" value="Чоловіча Білизна">
+                    <span>Чоловіча Білизна</span>
+                </label>
+                <label class="btn-option">
+                    <img src="images/BoxersKids.png" alt="Дитяча Білизна" class="w-24 h-24 mb-2">
+                    <input type="checkbox" name="product" value="Дитяча Білизна">
+                    <span>Дитяча Білизна</span>
+                </label>
+                <label class="btn-option">
+                    <img src="images/futbolka.png" alt="Футболки" class="w-24 h-24 mb-2">
+                    <input type="checkbox" name="product" value="Футболки">
+                    <span>Футболки</span>
+                </label>
+                <label class="btn-option">
+                    <img src="images/noski.png" alt="Шкарпетки Для Дорослих" class="w-24 h-24 mb-2">
+                    <input type="checkbox" name="product" value="Шкарпетки Для Дорослих">
+                    <span>Шкарпетки Для Дорослих</span>
+                </label>
+            </div>
+
+            <!-- New Section for Boxer Style Selection -->
+            <h2 class="text-2xl font-bold mt-8 mb-4 text-center">Виберіть свій стиль</h2>
+            <div class="grid grid-cols-3 gap-4">
+                <label class="btn-option">
+                    <img src="images/classic.png" alt="Класичні" class="w-24 h-24 mb-2">
+                    <input type="checkbox" name="style" value="Класичні">
+                    <span>Класичні</span>
+                </label>
+                <label class="btn-option">
+                    <img src="images/long.png" alt="Довгі" class="w-24 h-24 mb-2">
+                    <input type="checkbox" name="style" value="Довгі">
+                    <span>Довгі</span>
+                </label>
+                <label class="btn-option">
+                    <img src="images/briefs.png" alt="Бріфи" class="w-24 h-24 mb-2">
+                    <input type="checkbox" name="style" value="Бріфи">
+                    <span>Бріфи</span>
+                </label>
+            </div>
+
+            <!-- New Section for Size Selection -->
+            <h2 class="text-2xl font-bold mt-8 mb-4 text-center">Виберіть свій розмір</h2>
+            <div class="grid grid-cols-6 gap-2">
+                <label class="btn-option">
+                    <input type="radio" name="size" value="S">
+                    <span>S</span>
+                </label>
+                <label class="btn-option">
+                    <input type="radio" name="size" value="M">
+                    <span>M</span>
+                </label>
+                <label class="btn-option">
+                    <input type="radio" name="size" value="L">
+                    <span>L</span>
+                </label>
+                <label class="btn-option">
+                    <input type="radio" name="size" value="XL">
+                    <span>XL</span>
+                </label>
+                <label class="btn-option">
+                    <input type="radio" name="size" value="XXL">
+                    <span>XXL</span>
+                </label>
+                <label class="btn-option">
+                    <input type="radio" name="size" value="XXXL">
+                    <span>XXXL</span>
+                </label>
+            </div>
+
+            <!-- New Section for Frequency Selection -->
+            <h2 class="text-2xl font-bold mt-8 mb-4 text-center">Виберіть частоту доставки</h2>
+            <div class="grid grid-cols-3 gap-4">
+                <label class="btn-option">
+                    <input type="radio" name="frequency" value="Щомісяця">
+                    <span>Щомісяця</span>
+                </label>
+                <label class="btn-option">
+                    <input type="radio" name="frequency" value="Раз на 3 місяці">
+                    <span>Раз на 3 місяці</span>
+                </label>
+                <label class="btn-option">
+                    <input type="radio" name="frequency" value="Раз на 6 місяців">
+                    <span>Раз на 6 місяців</span>
+                </label>
+            </div>
+
+            <div class="flex justify-center mt-8">
+                <button type="submit" class="bg-gradient text-black font-bold py-2 px-6 border rounded-full shadow-reflection reflect">
+                    Продовжити
+                </button>
+            </div>
+        </form>
+        <div class="flex justify-center mt-4">
+            <button onclick="showPage('page2')" class="bg-gradient text-black font-bold py-2 px-6 border rounded-full shadow-reflection reflect">
+                Назад
+            </button>
+        </div>
+    </div>
+
+    <!-- Fourth Page -->
+    <div id="page4" class="hidden container text-center p-8 rounded-corners bg-gray-800 shadow-reflection content">
+        <h1 class="text-4xl font-bold mb-4">🎉 Вітаємо!</h1>
+        <p class="text-xl mb-4">Реєстрація в Клубі Свободи пройдена успішно.✅</p>
+        
+        <h2 class="text-2xl font-bold mb-4">💳 Підтвердження підписки</h2>
+        <p class="text-lg mb-4">Ваша підписка <span id="subscriptionDetails"></span> успішно оформлена.</p>
+        <p class="text-lg mb-8">Ваша свобода вибору тепер не має меж.</p>
+        
+        <h2 class="text-2xl font-bold mb-4">🛒 Перейти до оформлення</h2>
+        <form id="checkoutForm">
+            <div class="mb-4">
+                <label for="phone" class="block text-lg mb-2">Введіть ваш номер телефону:</label>
+                <div class="flex items-center">
+                    <span class="text-lg text-gray-400 mr-2">+380</span>
+                    <input type="tel" id="phone" name="phone" placeholder="123456789" class="p-2 rounded-corners bg-gray-700 text-white w-full">
+                </div>
+            </div>
+            <button type="submit" class="bg-gradient text-black font-bold py-2 px-6 border rounded-full shadow-reflection reflect mt-4">
+                Перевірити
+            </button>
+        </form>
+        <p class="text-lg mt-4">Готові до нових вражень? Натисніть “Перевірити” та завершіть оформлення вашого білету у Клуб Свободи!</p>
+    </div>
+
+    <script>
+        function showPage(pageId) {
+            document.getElementById('page1').classList.add('hidden');
+            document.getElementById('page2').classList.add('hidden');
+            document.getElementById('page3').classList.add('hidden');
+            document.getElementById('page4').classList.add('hidden');
+            document.getElementById(pageId).classList.remove('hidden');
+        }
+
+        document.querySelectorAll('input[type="checkbox"], input[type="radio"]').forEach(input => {
+            input.addEventListener('change', function() {
+                const parent = this.closest('.btn-option');
+                if (this.checked) {
+                    parent.classList.add('selected');
+                } else {
+                    parent.classList.remove('selected');
+                }
+            });
+        });
+
+        document.getElementById('subscriptionForm').addEventListener('submit', function (e) {
+            e.preventDefault();
+            const selectedProducts = Array.from(document.querySelectorAll('input[name="product"]:checked')).map(cb => cb.value);
+            const selectedStyle = document.querySelector('input[name="style"]:checked')?.value || '';
+            const selectedSize = document.querySelector('input[name="size"]:checked')?.value || '';
+            const selectedFrequency = document.querySelector('input[name="frequency"]:checked')?.value || '';
+
+            localStorage.setItem('selectedProducts', JSON.stringify(selectedProducts));
+            localStorage.setItem('selectedStyle', selectedStyle);
+            localStorage.setItem('selectedSize', selectedSize);
+            localStorage.setItem('selectedFrequency', selectedFrequency);
+
+            showPage('page4');
+        });
+
+        document.addEventListener('DOMContentLoaded', function () {
+            const subscriptionDetails = document.getElementById('subscriptionDetails');
+            const selectedProducts = JSON.parse(localStorage.getItem('selectedProducts')) || [];
+            const selectedStyle = localStorage.getItem('selectedStyle') || '';
+            const selectedSize = localStorage.getItem('selectedSize') || '';
+            const selectedFrequency = localStorage.getItem('selectedFrequency') || '';
+
+            const details = `
+                Продукти: ${selectedProducts.join(', ')}
+                Стиль: ${selectedStyle}
+                Розмір: ${selectedSize}
+                Частота: ${selectedFrequency}
+            `;
+
+            subscriptionDetails.textContent = details;
+        });
+
+        document.getElementById('checkoutForm').addEventListener('submit', function (e) {
+            e.preventDefault();
+            const phone = document.getElementById('phone').value;
+            if (phone) {
+                alert('Дякуємо за реєстрацію! Ваш номер телефону: +380' + phone);
+            } else {
+                alert('Будь ласка, введіть ваш номер телефону.');
+            }
+        });
+    </script>
+</body>
+</html>
